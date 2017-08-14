@@ -1,4 +1,4 @@
-# Course Content for Programming 3 
+# Programming 3 Course Content
 
 ## Lesson 1
 
