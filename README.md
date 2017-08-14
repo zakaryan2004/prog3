@@ -1,4 +1,4 @@
-# prog3 course content
+# Course Content for Programming 3 
 
 ## Lesson 1
 
