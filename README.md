@@ -6,7 +6,6 @@ Introduction to course content and main tools
 
 - nodejs and npm
 - terminal
-- jupyter
 
 - տվյալների մշակման մասին
 - վիզուալացման օրինակներ
@@ -20,6 +19,33 @@ Introduction to course content and main tools
 ## Lesson 2 
 
 տվյալների քերում և նախապատրաստում
+
+- Տեխնիկական scrapping
+- անհրաժեշտ գրադարաններ , request, cherio, fs
+- selector-ներ, DOM ծառ և այլն, cherio-ի համար
+- JSON js օբյեկտը, json-ից տեքստ և հակառակը
+- աշխատանք JSON, հիմնական, կարդալ ցանցից
+- examples: JSON, HTML, CSV, XML
+- examples: scrape from html, scrape from api 
+- choose final project
+
+### Assignment 2
+
+- todo
+
+## Lesson 3
+
+Պրակտիկ դաս - Git, Github
+
+- git
+- github
+- տվյալների աղբյուրներ
+- սկսում ենք հավաքագրել տվյալները և դրանք մշակել
+
+### Assignment 3
+
+
+
 
 
 
