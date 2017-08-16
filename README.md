@@ -6,7 +6,6 @@ Introduction to course content and main tools
 
 - nodejs and npm
 - terminal
-
 - տվյալների մշակման մասին
 - վիզուալացման օրինակներ
 - տվյալների ֆորմատներ  (json, html, xml , csv ....)
