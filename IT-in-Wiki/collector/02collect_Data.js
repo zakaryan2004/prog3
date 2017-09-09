@@ -1,29 +1,25 @@
 var request = require('request');
 var cheerio = require('cheerio');
 var fs = require('fs');
+var forEach = require('async-foreach').forEach;
 var wikiLinks = require("./data/wikiLinks.json");
 
 var wikiPages = [];
 var i = 0;
 var f = "data/wikiPages.json";
 
-__request(wikiLinks[0]);
-
-function __request(currURL) {
-    if (wikiLinks.length == i) {
-        fs.writeFile(f, JSON.stringify(wikiPages));
-        return;
-    } else {
-        request.get(currURL, function(error, response, page) {
-            currURL = wikiLinks[i++];
-            collectData(page, currURL);
-            console.log("processed :" + currURL);
-            __request(currURL);
-
-        });
-
-    }
-}
+forEach(wikiLinks, function(link,index, arr) {
+    request(link, function(error, response, page) {
+            wikiPages.push(collectData(page,link));
+            i++;
+            console.log("processed :" + link);
+            if(index==arr.length-1){
+                //console.log(wikiPages);
+                fs.writeFile(f, JSON.stringify(wikiPages));
+                console.log("end");
+            }
+    });
+});
 
 
 function collectData(innerPage, currURL) {
@@ -50,10 +46,11 @@ function collectData(innerPage, currURL) {
         "subTitles": subTitlesArr,
         "url": currURL
     };
-
-    wikiPages.push(pageData);
-    //console.log(wikiPages);
+    
+    return pageData;
 }
+
+
 
 function clearData(str) {
     str = str.trim();
