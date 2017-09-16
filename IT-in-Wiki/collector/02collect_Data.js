@@ -50,8 +50,6 @@ function collectData(innerPage, currURL) {
     return pageData;
 }
 
-
-
 function clearData(str) {
     str = str.trim();
     return str.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
