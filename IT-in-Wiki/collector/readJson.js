@@ -6,6 +6,7 @@ var links = [];
 var unansweredCounts = [];
 var tagsCount = 20;
 
+
 function collectData(innerPage) {
     var $ = cheerio.load(innerPage);
     var summarycount = $(".summarycount").text();
@@ -13,49 +14,44 @@ function collectData(innerPage) {
     return summarycount;
 }
 
-for(i = 0; i < tagsCount;i++)
-{
+for (i = 0; i < tagsCount; i++) {
     links.push("https://stackoverflow.com/unanswered/tagged/" + data[i].name);
 }
 var i = 0;
-console.log(links);
+console.log("Processing...");
 
-asyncLoop(links, function (item, next)
-{
+asyncLoop(links, function (item, next) {
     i++;
-    request(item,function(error,responce,page)
-    {
-        unansweredCounts.push(collectData(page));         
-        if(i != tagsCount)
-        {
+    request(item, function (error, responce, page) {
+        unansweredCounts.push(collectData(page));
+        if (i != tagsCount) {
             next();
         }
-        else
-        {
+        else {
             loop();
-        }        
-    });    
+        }
+    });
 });
 
-function loop()
-{
-    for(i = 0; i < tagsCount;i++)
-    {             
-    var _count = data[i].count;
-    var count = _count.toLocaleString(
-            'en-US', 
+function loop() {
+    for (i = 0; i < tagsCount; i++) {
+        var _count = data[i].count;
+        var count = _count.toLocaleString(
+            'en-US',
             { minimumFractionDigits: 0 }
-            );   
-    var _answeredQuestions = parseInt(_count) - parseInt(clearData(unansweredCounts[i]));
-    var answeredQuestions = _answeredQuestions.toLocaleString(
-            'en-US', 
+        );
+        var _answeredQuestions = parseInt(_count) - parseInt(clearData(unansweredCounts[i]));
+        var answeredQuestions = _answeredQuestions.toLocaleString(
+            'en-US',
             { minimumFractionDigits: 0 }
-            );   
-    console.log(i+1 + ":" + data[i].name + ", "+ count + " questions" + ", " + answeredQuestions + " unanswered questions");                      
-    } 
+        );
+        var _answeredPercentage = (_answeredQuestions * 100) / _count;
+        var answeredPercentage = Math.round(_answeredPercentage * 10) / 10
+        console.log(i + 1 + ":" + data[i].name + ", " + count + " questions" + ", " + answeredQuestions + " answered questions" + ", " + answeredPercentage + "% answered");
+    }
 }
 
-                
+
 function clearData(str) {
     str = str.trim();
     return str.replace(",", "");
