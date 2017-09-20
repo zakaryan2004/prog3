@@ -1,11 +1,14 @@
 var cheerio = require('cheerio');
 var request = require('request');
 var asyncLoop = require('node-async-loop');
+var fs = require('fs');
 var data = require('./data/stackOverAPI.json');
 var links = [];
 var unansweredCounts = [];
-var tagsCount = 20;
-
+var tagsCount = 10;
+var f = "data/finalData.json";
+var collectedDataArr = [];
+var testArr = [1];
 
 function collectData(innerPage) {
     var $ = cheerio.load(innerPage);
@@ -28,12 +31,17 @@ asyncLoop(links, function (item, next) {
             next();
         }
         else {
-            loop();
+            writeToJson();
         }
     });
 });
 
-function loop() {
+function clearData(str) {
+    str = str.trim();
+    return str.replace(",", "");
+}
+
+function writeToJson() {
     for (i = 0; i < tagsCount; i++) {
         var _count = data[i].count;
         var count = _count.toLocaleString(
@@ -47,12 +55,47 @@ function loop() {
         );
         var _answeredPercentage = (_answeredQuestions * 100) / _count;
         var answeredPercentage = Math.round(_answeredPercentage * 10) / 10
-        console.log(i + 1 + ":" + data[i].name + ", " + count + " questions" + ", " + answeredQuestions + " answered questions" + ", " + answeredPercentage + "% answered");
+        var collectedData = {
+            "id": i + 1,
+            "name": data[i].name,
+            "questions": data[i].count,
+            "answeredQuestions": answeredQuestions,
+            "answeredPercentage": answeredPercentage
+        }
+        collectedDataArr.push(collectedData);
     }
-}
+    fs.writeFile(f, JSON.stringify(collectedDataArr));
+    /*
+    let buffer = "hi";
+    fs.open(f, 'w', function(err, fd) {  
+        if (err) {
+            throw 'could not open file: ' + err;
+        }
+    
+        // write the contents of the buffer, from position 0 to the end, to the file descriptor returned in opening our file
+        fs.write(fd, buffer , 1, buffer.length, null, function(err) {
+            if (err) throw 'error writing file: ' + err;
+            fs.close(fd, function() {
+                console.log('wrote the file successfully');
+            });
+        });
+    });*/
+    var position = 0;
+    var file_path = f;
 
+    var new_text = '{"data": ';
 
-function clearData(str) {
-    str = str.trim();
-    return str.replace(",", "");
+    fs.readFile(file_path, function read(err, data) {
+        if (err) {
+            throw err;
+        }
+        var file_content = data.toString();
+        file_content = file_content.substring(position);
+        var file = fs.openSync(file_path, 'r+');
+        var bufferedText = new Buffer(new_text + file_content);
+        fs.write(file, bufferedText, 0, bufferedText.length);
+        fs.appendFile(file_path, "}"); 
+        fs.close(file);        
+    });
+            
 }
