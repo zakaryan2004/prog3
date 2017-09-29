@@ -6,7 +6,7 @@ var data = require('./data/stackOverAPI.json');
 var links = [];
 var unansweredCounts = [];
 var tagsCount = 10;
-var f = "data/finalData.json";
+var f = "../dataAPI/public/finalData.json";
 var collectedDataArr = [];
 var testArr = [1];
 
@@ -58,28 +58,17 @@ function writeToJson() {
         var collectedData = {
             "id": i + 1,
             "name": data[i].name,
-            "questions": data[i].count,
-            "answeredQuestions": answeredQuestions,
-            "answeredPercentage": answeredPercentage
+            "v_questions": _count,
+            "f_questions": count,            
+            "v_answeredQuestions": _answeredQuestions,
+            "f_answeredQuestions": answeredQuestions,
+            "v_answeredPercentage": _answeredPercentage,            
+            "f_answeredPercentage": answeredPercentage
         }
         collectedDataArr.push(collectedData);
     }
     fs.writeFile(f, JSON.stringify(collectedDataArr));
     /*
-    let buffer = "hi";
-    fs.open(f, 'w', function(err, fd) {  
-        if (err) {
-            throw 'could not open file: ' + err;
-        }
-    
-        // write the contents of the buffer, from position 0 to the end, to the file descriptor returned in opening our file
-        fs.write(fd, buffer , 1, buffer.length, null, function(err) {
-            if (err) throw 'error writing file: ' + err;
-            fs.close(fd, function() {
-                console.log('wrote the file successfully');
-            });
-        });
-    });*/
     var position = 0;
     var file_path = f;
 
@@ -97,5 +86,5 @@ function writeToJson() {
         fs.appendFile(file_path, "}"); 
         fs.close(file);        
     });
-            
+    */
 }

@@ -1,8 +1,8 @@
 var stackexchange = require('stackexchange');
 var fs = require('fs');;
-var tagsCount = 10;
+var tagsCount = 100;
 //var forEach = require('async-foreach').forEach;
-var link = ["https://api.stackexchange.com/2.2/tags?pagesize=" + tagsCount + "order=desc&sort=popular&site=stackoverflow&filter=!bNKX0pf0krrMgC"]
+//var link = ["https://api.stackexchange.com/2.2/tags?pagesize=" + tagsCount + "order=desc&sort=popular&site=stackoverflow&filter=!bNKX0pf0krrMgC"]
 //var wikiLinks = require("./data/wikiLinks.json");
 
 var pages = [];
@@ -16,7 +16,7 @@ var context = new stackexchange(options);
 
 var filter = { 
  filter:"!bNKX0pf0krrMgC",
- pagesize: 30,
+ pagesize: tagsCount,
  tagged: 'node.js',
 };
 
