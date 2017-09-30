@@ -1,1 +1,102 @@
-[{"id":1,"name":"javascript","v_questions":1475459,"f_questions":"1,475,459","v_answeredQuestions":1058123,"f_answeredQuestions":"1,058,123","v_answeredPercentage":71.71483585785847,"f_answeredPercentage":71.7},{"id":2,"name":"java","v_questions":1315543,"f_questions":"1,315,543","v_answeredQuestions":957163,"f_answeredQuestions":"957,163","v_answeredPercentage":72.75801703175038,"f_answeredPercentage":72.8},{"id":3,"name":"c#","v_questions":1138662,"f_questions":"1,138,662","v_answeredQuestions":1100037,"f_answeredQuestions":"1,100,037","v_answeredPercentage":96.60786080505014,"f_answeredPercentage":96.6},{"id":4,"name":"php","v_questions":1123953,"f_questions":"1,123,953","v_answeredQuestions":795038,"f_answeredQuestions":"795,038","v_answeredPercentage":70.73587596634378,"f_answeredPercentage":70.7},{"id":5,"name":"android","v_questions":1031014,"f_questions":"1,031,014","v_answeredQuestions":643669,"f_answeredQuestions":"643,669","v_answeredPercentage":62.43067504417981,"f_answeredPercentage":62.4},{"id":6,"name":"jquery","v_questions":870444,"f_questions":"870,444","v_answeredQuestions":634228,"f_answeredQuestions":"634,228","v_answeredPercentage":72.86258507152671,"f_answeredPercentage":72.9},{"id":7,"name":"python","v_questions":821047,"f_questions":"821,047","v_answeredQuestions":620881,"f_answeredQuestions":"620,881","v_answeredPercentage":75.62064047490583,"f_answeredPercentage":75.6},{"id":8,"name":"html","v_questions":691355,"f_questions":"691,355","v_answeredQuestions":506478,"f_answeredQuestions":"506,478","v_answeredPercentage":73.2587455070116,"f_answeredPercentage":73.3},{"id":9,"name":"c++","v_questions":533955,"f_questions":"533,955","v_answeredQuestions":436774,"f_answeredQuestions":"436,774","v_answeredPercentage":81.79977713477727,"f_answeredPercentage":81.8},{"id":10,"name":"ios","v_questions":530163,"f_questions":"530,163","v_answeredQuestions":355472,"f_answeredQuestions":"355,472","v_answeredPercentage":67.04956777443918,"f_answeredPercentage":67}]
+[
+    {
+        "id": 1,
+        "name": "javascript",
+        "v_questions": 1475459,
+        "f_questions": "1,475,459",
+        "v_answeredQuestions": 1058123,
+        "f_answeredQuestions": "1,058,123",
+        "v_answeredPercentage": 71.71483585785847,
+        "f_answeredPercentage": 71.7
+    },
+    {
+        "id": 2,
+        "name": "java",
+        "v_questions": 1315543,
+        "f_questions": "1,315,543",
+        "v_answeredQuestions": 957163,
+        "f_answeredQuestions": "957,163",
+        "v_answeredPercentage": 72.75801703175038,
+        "f_answeredPercentage": 72.8
+    },
+    {
+        "id": 3,
+        "name": "c#",
+        "v_questions": 1138662,
+        "f_questions": "1,138,662",
+        "v_answeredQuestions": 1100037,
+        "f_answeredQuestions": "1,100,037",
+        "v_answeredPercentage": 96.60786080505014,
+        "f_answeredPercentage": 96.6
+    },
+    {
+        "id": 4,
+        "name": "php",
+        "v_questions": 1123953,
+        "f_questions": "1,123,953",
+        "v_answeredQuestions": 795038,
+        "f_answeredQuestions": "795,038",
+        "v_answeredPercentage": 70.73587596634378,
+        "f_answeredPercentage": 70.7
+    },
+    {
+        "id": 5,
+        "name": "android",
+        "v_questions": 1031014,
+        "f_questions": "1,031,014",
+        "v_answeredQuestions": 643669,
+        "f_answeredQuestions": "643,669",
+        "v_answeredPercentage": 62.43067504417981,
+        "f_answeredPercentage": 62.4
+    },
+    {
+        "id": 6,
+        "name": "jquery",
+        "v_questions": 870444,
+        "f_questions": "870,444",
+        "v_answeredQuestions": 634228,
+        "f_answeredQuestions": "634,228",
+        "v_answeredPercentage": 72.86258507152671,
+        "f_answeredPercentage": 72.9
+    },
+    {
+        "id": 7,
+        "name": "python",
+        "v_questions": 821047,
+        "f_questions": "821,047",
+        "v_answeredQuestions": 620881,
+        "f_answeredQuestions": "620,881",
+        "v_answeredPercentage": 75.62064047490583,
+        "f_answeredPercentage": 75.6
+    },
+    {
+        "id": 8,
+        "name": "html",
+        "v_questions": 691355,
+        "f_questions": "691,355",
+        "v_answeredQuestions": 506478,
+        "f_answeredQuestions": "506,478",
+        "v_answeredPercentage": 73.2587455070116,
+        "f_answeredPercentage": 73.3
+    },
+    {
+        "id": 9,
+        "name": "c++",
+        "v_questions": 533955,
+        "f_questions": "533,955",
+        "v_answeredQuestions": 436774,
+        "f_answeredQuestions": "436,774",
+        "v_answeredPercentage": 81.79977713477727,
+        "f_answeredPercentage": 81.8
+    },
+    {
+        "id": 10,
+        "name": "ios",
+        "v_questions": 530163,
+        "f_questions": "530,163",
+        "v_answeredQuestions": 355472,
+        "f_answeredQuestions": "355,472",
+        "v_answeredPercentage": 67.04956777443918,
+        "f_answeredPercentage": 67
+    }
+]

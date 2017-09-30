@@ -11,10 +11,15 @@ $(document).ready(function () {
 
             data.addColumn('string', 'Name');
             data.addColumn('number', 'Questions');      
+            data.addColumn('number','Answered Questions');
             data.addColumn('number', 'Percentage Answered');              
             for(var i = 0;i< json.length;i++)
             {
-                data.addRow([json[i].name,{v:json[i].v_questions, f:json[i].f_questions},{v:json[i].v_answeredPercentage, f:json[i].f_answeredPercentage + "%"}]);
+                data.addRow(
+                    [json[i].name,
+                    {v:json[i].v_questions, f:json[i].f_questions},
+                    {v:json[i].v_answeredQuestions,f:json[i].f_answeredQuestions},                    
+                    {v:json[i].v_answeredPercentage, f:json[i].f_answeredPercentage + "%"}]);
             }
             /*
             data.addRows([
@@ -34,11 +39,13 @@ $(document).ready(function () {
             data = new google.visualization.DataTable(json);
 
             data.addColumn('string', 'Name');
-            data.addColumn('number', 'Questions');      
-            //data.addColumn('number', 'Percentage Answered');              
+            data.addColumn('number', 'Questions');   
             for(var i = 0;i< json.length;i++)
             {
-                data.addRow([json[i].name,{v:json[i].v_questions, f:json[i].f_questions}]); //,{v:json[i].v_answeredPercentage, f:json[i].f_answeredPercentage + "%"}
+                data.addRow(
+                    [json[i].name,
+                    {v:json[i].v_questions, f:json[i].f_questions}]);
+                console.log(json[i].f_answeredQuestions);
             }
             /*
             data.addRows([
@@ -49,7 +56,7 @@ $(document).ready(function () {
             ]);
             */
             var table = new google.visualization.PieChart(document.getElementById('questionChart_div'));
-            table.draw(data, { legend: 'left', showRowNumber: true});
+            table.draw(data, { legend: 'left',title: 'All Questions'});
         });
     }
 
@@ -73,7 +80,7 @@ $(document).ready(function () {
             ]);
             */
             var table = new google.visualization.PieChart(document.getElementById('answeredChart_div'));
-            table.draw(data, { showRowNumber: true});
+            table.draw(data, { legend: 'left',title: 'Answered Questions'});
         });
     }
     /*var data;
@@ -105,5 +112,9 @@ $(document).ready(function () {
         $("#collectedP").html(collDataArr);   
     });    
 */
-    
+$(window).resize(function () {
+    drawQuestionsChart();
+    drawAnsweredChart();
+    drawTable();
+});
 });
