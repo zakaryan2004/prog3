@@ -4,7 +4,7 @@ $(document).ready(function () {
     google.charts.load('current', { 'packages': ['table','corechart','bar'] });
     google.charts.setOnLoadCallback(drawTable);
     google.charts.setOnLoadCallback(drawQuestionsChart);
-    google.charts.setOnLoadCallback(drawAnsweredChart);
+    google.charts.setOnLoadCallback(drawAnsweredQuestionChart);
     google.charts.setOnLoadCallback(drawQuestionBar);
     google.charts.setOnLoadCallback(drawAnsweredPercentBar);
 
@@ -24,14 +24,6 @@ $(document).ready(function () {
                     {v:json[i].v_answeredQuestions,f:json[i].f_answeredQuestions},                    
                     {v:json[i].v_answeredPercentage, f:json[i].f_answeredPercentage + "%"}]);
             }
-            /*
-            data.addRows([
-                ['Mike', { v: 10000, f: '$10,000' }, true],
-                ['Jim', { v: 8000, f: '$8,000' }, false],
-                ['Alice', { v: 12500, f: '$12,500' }, true],
-                ['Bob', { v: 7000, f: '$7,000' }, true]
-            ]);
-            */
             var table = new google.visualization.Table(document.getElementById('table_div'));
             table.draw(data, { showRowNumber: true,width:"100%"});
         });
@@ -43,18 +35,18 @@ $(document).ready(function () {
 
             data.addColumn('string', 'Name');
             data.addColumn('number', 'Questions');   
-            for(var i = 0;i< dataCount;i++)
+            for(var i = 0;i< json.length;i++)
             {
                 data.addRow(
                     [json[i].name,
-                    {v:json[i].v_questions, f:json[i].f_questions}]);                
+                    {v:json[i].v_questions, f:json[i].f_questions}]);           
             }
             var table = new google.visualization.PieChart(document.getElementById('questionChart_div'));
-            table.draw(data, { legend: 'left',title: 'All Questions'});
+            table.draw(data, { legend: 'left',title: 'All Questions', sliceVisibilityThreshold: .025});
         });
     }
 
-    function drawAnsweredChart() {
+    /*function drawAnsweredPercentChart() {
         $.getJSON('finalData.json', function (json) {
             data = new google.visualization.DataTable(json);
 
@@ -62,10 +54,24 @@ $(document).ready(function () {
             data.addColumn('number', 'Answered Questions');                  
             for(var i = 0;i < dataCount;i++)
             {
+                data.addRow([json[i].name,{v:json[i].v_answeredPercentage, f:json[i].f_answeredPercentage + "%"}]); //,{v:json[i].v_answeredPercentage, f:json[i].f_answeredPercentage + "%"}
+            }
+            var table = new google.visualization.PieChart(document.getElementById('answeredPercentChart_div'));
+            table.draw(data, { legend: 'left',title: 'Percentage of Answered Questions'});
+        });
+    }*/
+
+    function drawAnsweredQuestionChart() {
+        $.getJSON('finalData.json', function (json) {
+            data = new google.visualization.DataTable(json);
+            data.addColumn('string','Name');  
+            data.addColumn('number', 'Percentage Answered');              
+            for(var i = 0;i < json.length;i++)
+            {
                 data.addRow([json[i].name,{v:json[i].v_answeredQuestions, f:json[i].f_answeredQuestions}]); //,{v:json[i].v_answeredPercentage, f:json[i].f_answeredPercentage + "%"}
             }
             var table = new google.visualization.PieChart(document.getElementById('answeredChart_div'));
-            table.draw(data, { legend: 'left',title: 'Answered Questions'});
+            table.draw(data, { legend: 'left',title: 'Answered Questions', sliceVisibilityThreshold: .025});
         });
     }
     function drawQuestionBar() {
@@ -143,7 +149,9 @@ $(document).ready(function () {
 */
 $(window).resize(function () {
     drawQuestionsChart();
-    drawAnsweredChart();
+    drawAnsweredQuestionChart();
+    drawAnsweredPercentBar();
+    drawQuestionBar();
     drawTable();
     drawQuestionBar();
     drawAnsweredPercentBar();
