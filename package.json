@@ -1,17 +1,17 @@
 {
-  "name": "TUMOprog3",
+  "name": "stackoverflow-tags-collector",
   "version": "1.0.0",
-  "description": "Data research and visualisation project example for TUMO students",
+  "description": "Programming Language Population According to StackOverflow",
   "main": "index.js",
   "scripts": {
     "start": "cd dataAPI && node page.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "hanumanum && tumregels",
+  "author": "zakaryan2004",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tumregels/prog3"
+    "url": "https://github.com/zakaryan2004/prog3"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
