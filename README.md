@@ -16,5 +16,5 @@
 - JSON files for keeping data. ujhFJD
 
 ## What can you do for helping this project grow
-- Visit my project's Heroku page(https://www.stackoverflow-tags-collector.herokuapp.com)
+- Visit my project's Heroku page(https://stackoverflow-tags-collector.herokuapp.com/)
 - Contribute my project it you have an idea to extend my project.
