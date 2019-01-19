@@ -8,11 +8,13 @@ var unansweredCounts = [];
 var tagsCount = 100;
 var f = "../dataAPI/public/finalData.json";
 var collectedDataArr = [];
-var testArr = [1];
 
 function collectData(innerPage) {
     var $ = cheerio.load(innerPage);
-    var summarycount = $(".summarycount").text();
+    var summarycount_text = $(".grid--cell.fl1.fs-body3").html();  
+    var summarycount = summarycount_text.trim().split(" ")[0];
+    console.log(summarycount_text);
+    console.log(summarycount);
 
     return summarycount;
 }
@@ -67,7 +69,9 @@ function writeToJson() {
         }
         collectedDataArr.push(collectedData);
     }
-    fs.writeFile(f, JSON.stringify(collectedDataArr));
+    fs.writeFile(f, JSON.stringify(collectedDataArr), function(err, result) {
+        if(err) console.log('Failed to write to file. Error: ', err);
+      })
     /*
     var position = 0;
     var file_path = f;

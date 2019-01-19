@@ -26,5 +26,7 @@ context.tags.tags(filter, function(err, results){
  
  console.log(results.items); 
  console.log("Has more:" + results.has_more);
- fs.writeFile(f,JSON.stringify(results.items)) 
+ fs.writeFile(f,JSON.stringify(results.items), function(err, result) {
+    if(err) console.log('Failed to write to file. Error: ', err);
+  })
 });
